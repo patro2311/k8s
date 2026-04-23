@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: google-chrome
+  name: google-chrome-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: google-chrome
+  template:
+    metadata:
+      labels:
+        app: google-chrome
+    spec:
+      containers:
+      - image: 127.0.0.1:5000/chromium:latest
+        name: chromium-browser
+        ports:
+        - containerPort: 7001
+
+---
+### service to expose the deployment
+apiVersion: v1
+kind: Service
+metadata:
+  name: google-chrome-service
+spec:
+  selector:
+    app: google-chrome
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 7001
+  type: NodePort
