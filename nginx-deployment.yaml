@@ -1,0 +1,24 @@
+apiVersion: apps/v1              # Which Kubernetes API version to use
+kind: Deployment                # We are creating a Deployment object
+
+metadata:
+  name: nginx-deployment        # Name of the Deployment inside Kubernetes #  kubelctl get all
+
+spec:
+  replicas: 2                   # 👈 We want 2 Pods running at all times
+
+  selector:
+    matchLabels:
+      app: nginx                # 👈 Deployment will manage Pods with this label
+
+  template:                     # 👈 Blueprint for creating Pods, how to create them 
+    metadata:
+      labels:
+        app: nginx              # 👈 Pods will be created with this label Tag for identifying the pod
+
+    spec:
+      containers:
+      - name: nginx-test             # 👈 Name of the container (inside the Pod)
+        image: nginx            # 👈 Docker image to run (NGINX server)
+        ports:
+        - containerPort: 80     # 👈 NGINX listens on port 80
