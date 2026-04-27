@@ -48,6 +48,6 @@ spec:
     app: web-label
   ports:
   - port: 3000 
-    Protocol: TCP
+    protocol: TCP
     targetPort: 3000 # where to forward the request to in the container
     nodePort: 30100 # the port on the node that will forward to the container port
