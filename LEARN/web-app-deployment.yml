@@ -39,7 +39,9 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  app: web-app-service # need o forward requests to the right deployment
+  name: web-app-service 
+MatchLabels:
+  app: web-label
 spec:
   type: NodePort
   selector:
