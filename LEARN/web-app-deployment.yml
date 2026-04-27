@@ -40,8 +40,8 @@ apiVersion: v1
 kind: Service
 metadata:
   name: web-app-service 
-MatchLabels:
-  app: web-label
+  labels:
+    app: web-label
 spec:
   type: NodePort
   selector:
