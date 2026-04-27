@@ -2,17 +2,17 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    app: google-chrome
-  name: google-chrome-deployment
+    app: chrome
+  name: chromium_browser-deployment
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: google-chrome
+      app: chrome
   template:
     metadata:
       labels:
-        app: google-chrome
+        app: chrome
     spec:
       containers:
       - image: 127.0.0.1:5000/chromium:latest
@@ -28,7 +28,7 @@ metadata:
   name: google-chrome-service
 spec:
   selector:
-    app: google-chrome
+    app: chrome
   ports:
     - protocol: TCP
       port: 80

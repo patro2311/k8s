@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mango-deployment-test
+  labels:
+    app: mango-label
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: mango-label
+  template:
+    metadata:
+      labels:
+        app: mango-label
+    spec:
+      containers:
+      - name: mango-container
+        image: mongo:5.0
+        ports:
+        - containerPort: 27017
+        env:
+        - name: MONGO_INIT_DB_ROOT_USERNAME
+          valueFrom:
+            secretKeyRef:
+              name: mongo-secret # will match the secret name in mongo_secret.yml under metadata.name
+              key: MONGO_USER # will match the key in mongo_secret.yml under data
+
+        - name: MONGO_INIT_DB_ROOT_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: mongo-secret # will match the secret name in mongo_secret.yml under metadata.name
+              key: MONGO_PASSWORD # will match the key in mongo_secret.yml under data
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mongo-service
+  labels:
+    app: mango-label # need o forward requests to the right deployment
+spec:
+  selector:
+    app: mango-label
+  ports:
+  - port: 8080
+    targetPort: 27017 # where to forward the request to in the container
