@@ -5,7 +5,7 @@ metadata:
     app: chrome
   name: chromium_browser-deployment
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: chrome
@@ -15,8 +15,15 @@ spec:
         app: chrome
     spec:
       containers:
-      - image: 127.0.0.1:5000/chromium:latest
+      - image: chromium-browser:latest
         name: chromium-browser
+        resources:
+          requests:
+            cpu: "100m"
+            memory: "128Mi"
+          limits:
+            cpu: "250m"
+            memory: "256Mi"
         ports:
         - containerPort: 7001
 
