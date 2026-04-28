@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   labels:
     app: chrome
-  name: chromium_browser-deployment
+  name: chromium-browser-deployment
 spec:
   replicas: 1
   selector:
