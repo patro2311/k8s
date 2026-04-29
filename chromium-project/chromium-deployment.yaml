@@ -15,7 +15,7 @@ spec:
         app: chrome
     spec:
       containers:
-      - image: chromium-browser:latest
+      - image: docker.io/mine/chromium-browser:latest
         imagePullPolicy: IfNotPresent
         name: chromium-browser
         resources:
