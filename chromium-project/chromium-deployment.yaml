@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - image: chromium-browser
-        imagePullPolicy: Never
+        imagePullPolicy: IfNotPresent
         name: chromium-browser
         resources:
           requests:
