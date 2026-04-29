@@ -15,7 +15,8 @@ spec:
         app: chrome
     spec:
       containers:
-      - image: localhost/chromium-browser:latest
+      - image: chromium-browser:latest
+        imagePullPolicy: Never
         name: chromium-browser
         resources:
           requests:
