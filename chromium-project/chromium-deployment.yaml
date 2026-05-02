@@ -13,7 +13,7 @@ metadata:
     app: chromium
 # Links deployment to Pods with the same label "chromium"
 spec:
-  replicas: 3
+  replicas: 1
   selector:
     matchLabels:
       app: chromium
@@ -47,7 +47,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: google-chrome-service
+  name: chromium-service
 spec:
   selector:
     app: chromium
