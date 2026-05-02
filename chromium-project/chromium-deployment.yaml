@@ -33,7 +33,14 @@ spec:
         - name: chromium-browser
           image: localhost:32000/chromium-browser:latest
           ports:
-            - containerPort: 7001      
+            - containerPort: 7001    
+          resources:
+            limits:
+              memory: "512Mi"
+              cpu: "500m"
+            requests:
+              memory: "256Mi"
+              cpu: "250m"  
 
 ---
 ### service to expose the deployment
@@ -47,7 +54,7 @@ spec:
   ports:
     - protocol: TCP
       port: 7001
-      targetPort: 7001
+      targetPort: 7001 # container define port 
       nodePort: 30100
   type: NodePort
   
