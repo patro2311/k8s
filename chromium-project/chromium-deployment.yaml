@@ -1,32 +1,39 @@
+# =================================
+# API version and kind of resource
+# =================================
 apiVersion: apps/v1
 kind: Deployment
+# =================================
+# Metadata (name, namespace, labels) and spec (replicas, selector, template) of the deployment
+# =================================
 metadata:
+  namespace: default
+  name: chromium-deployment
   labels:
-    app: chrome
-  name: chromium-browser-deployment
+    app: chromium
+# Links deployment to Pods with the same label "chromium"
 spec:
-  replicas: 1
+  replicas: 3
   selector:
     matchLabels:
-      app: chrome
+      app: chromium
+# =================================
+# Template blueprint (Nodes and container lvl spec) blueprint for the deployment
+# =================================
   template:
     metadata:
       labels:
-        app: chrome
+        app: chromium
     spec:
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 1000
+        fsGroup: 1000
       containers:
-      - image: localhost:32000/chromium-browser:latest
-        imagePullPolicy: IfNotPresent
-        name: chromium-browser
-        resources:
-          requests:
-            cpu: "100m"
-            memory: "128Mi"
-          limits:
-            cpu: "250m"
-            memory: "256Mi"
-        ports:
-        - containerPort: 7001
+        - name: chromium-browser
+          image: localhost:32000/chromium-browser:latest
+          ports:
+            - containerPort: 7001      
 
 ---
 ### service to expose the deployment
@@ -36,10 +43,10 @@ metadata:
   name: google-chrome-service
 spec:
   selector:
-    app: chrome
+    app: chromium
   ports:
     - protocol: TCP
-      port: 80
+      port: 7001
       targetPort: 7001
       nodePort: 30100
   type: NodePort
