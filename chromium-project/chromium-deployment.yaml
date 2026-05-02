@@ -36,11 +36,11 @@ spec:
             - containerPort: 7001    
           resources:
             limits:
-              memory: "512Mi"
-              cpu: "500m"
+              memory: "1000Mi"
+              cpu: "2000m"
             requests:
-              memory: "256Mi"
-              cpu: "250m"  
+              memory: "1000Mi"
+              cpu: "2000m" 
 
 ---
 ### service to expose the deployment
