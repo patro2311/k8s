@@ -40,21 +40,5 @@ spec:
               cpu: "2000m"
             requests:
               memory: "1000Mi"
-              cpu: "2000m" 
-
----
-### service to expose the deployment
-apiVersion: v1
-kind: Service
-metadata:
-  name: chromium-service
-spec:
-  selector:
-    app: chromium
-  ports:
-    - protocol: TCP
-      port: 7001
-      targetPort: 7001 # container define port 
-      nodePort: 30100
-  type: NodePort
+              cpu: "2000m"
   
