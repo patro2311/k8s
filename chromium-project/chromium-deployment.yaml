@@ -31,7 +31,8 @@ spec:
         fsGroup: 1000
       containers:
         - name: chromium-browser
-          image: chromium-browser:latest
+          imagePullPolicy: IfNotPresent
+          image: localhost:32000/chromium-browser:latest 
           ports:
             - containerPort: 7001    
           resources:
