@@ -4,7 +4,7 @@ metadata:
   labels: 
     run: nginx
     method: fromvscode
-    another: label
+    another: label-test
   name: nginx-yaml
 spec:
   containers:
