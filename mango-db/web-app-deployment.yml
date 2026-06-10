@@ -1,0 +1,60 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web-deployment-test
+  labels:
+    app: web-label
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: web-label
+  template:
+    metadata:
+      labels:
+        app: web-label
+    spec:
+      containers:
+      - name: web-container
+        image: nanajanashia/k8s-demo-app:v1.0
+        ports:
+        - containerPort: 3000
+        resources:
+          requests:
+            memory: "128Mi"
+            cpu: "100m"
+          limits:
+            memory: "256Mi"
+            cpu: "500m"
+        env:
+        - name: USER_NAME
+          valueFrom:
+            secretKeyRef:
+              name: mongo-secret 
+              key: MONGO_USER 
+        - name: USER_PWD
+          valueFrom:
+            secretKeyRef:
+              name: mongo-secret 
+              key: MONGO_PASSWORD
+        - name: DB_URL
+          valueFrom:
+            configMapKeyRef:
+              name: mango-config 
+              key: mango_url
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: web-app-service 
+  labels:
+    app: web-label
+spec:
+  type: NodePort
+  selector:
+    app: web-label
+  ports:
+  - port: 3000 
+    protocol: TCP
+    targetPort: 3000 # where to forward the request to in the container
+    nodePort: 30100 # the port on the node that will forward to the container port
