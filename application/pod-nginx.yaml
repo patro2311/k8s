@@ -4,7 +4,7 @@ metadata:
   labels: 
     run: nginx
     method: fromcode
-  name: nginx-yaml
+  name: nginx-server
 spec:
   containers:
   - image: nginx:latest
