@@ -15,7 +15,7 @@ spec:
         app: httpd
     spec:
       containers:
-        - image: httpd:alphine3.18
+        - image: httpd
           name: httpd
   strategy:
     type: RollingUpdate # it's a default value
