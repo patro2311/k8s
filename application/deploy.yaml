@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: httpd
+  name: htppd-deployment.yaml
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: htppd
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: htppd
+    spec:
+      containers:
+      - image: httpd
+        name: httpd
