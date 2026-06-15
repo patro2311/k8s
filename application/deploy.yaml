@@ -18,7 +18,9 @@ spec:
         - image: httpd
           name: httpd
   strategy:
-    type: RollingUpdate # it's a default value
-    rollingUpdate:
-      maxUnavailable: 1  # you can set up in %, or per number of pods
-      maxSurge: 1
+    ## THIS WILL UPATE 2 PODS AT A TIME, AND WILL KEEP 8 PODS RUNNING
+    # type: RollingUpdate # it's a default value
+    # rollingUpdate:
+    #   maxUnavailable: 1  # you can set up in %, or per number of pods
+    #   maxSurge: 1
+    type: recreate # this will delete all pods and create new ones, so there will be downtime
