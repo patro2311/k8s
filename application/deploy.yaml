@@ -11,7 +11,6 @@ spec:
       app: httpd
   template:
     metadata:
-      creationTimestamp: null
       labels:
         app: httpd
     spec:
