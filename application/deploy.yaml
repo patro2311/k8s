@@ -23,4 +23,5 @@ spec:
      rollingUpdate:
        maxUnavailable: 1  # you can set up in %, or per number of pods
        maxSurge: 1
-    # type: Recreate # this will delete all pods and create new ones, so there will be downtime
+    ## this will delete all pods and create new ones, so there will be downtime
+    # type: Recreate 
