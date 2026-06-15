@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   labels:
     app: httpd
-  name: htppd-deployment.yaml
+  name: htppd-deployment
 spec:
   replicas: 1
   selector:
