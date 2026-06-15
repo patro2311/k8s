@@ -3,18 +3,18 @@ kind: Deployment
 metadata:
   labels:
     app: httpd
-  name: htppd-deployment
+  name: httpd-deployment
 spec:
-  replicas: 1
+  replicas: 10
   selector:
     matchLabels:
-      app: htppd
+      app: httpd
   template:
     metadata:
       creationTimestamp: null
       labels:
-        app: htppd
+        app: httpd
     spec:
       containers:
-      - image: httpd
-        name: httpd
+        - image: httpd:alphine3.18
+          name: httpd
