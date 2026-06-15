@@ -20,5 +20,5 @@ spec:
   strategy:
     type: RollingUpdate # it's a default value
     rollingUpdate:
-      maxUnavailable: 1
+      maxUnavailable: 1  # you can set up in %, or per number of pods
       maxSurge: 1
