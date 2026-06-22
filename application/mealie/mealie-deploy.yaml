@@ -17,11 +17,11 @@ spec:
       containers:
       - image: ghcr.io/mealie-recipes/mealie:nightly
         name: mealie
-  strategy:
-    ## THIS WILL UPATE 2 PODS AT A TIME, AND WILL KEEP 8 PODS RUNNING
-     type: RollingUpdate # it's a default value
-     rollingUpdate:
-       maxUnavailable: 1  # you can set up in %, or per number of pods
-       maxSurge: 1
-    ## this will delete all pods and create new ones, so there will be downtime
-    # type: Recreate 
+  # strategy:
+  #   ## THIS WILL UPATE 2 PODS AT A TIME, AND WILL KEEP 8 PODS RUNNING
+  #    type: RollingUpdate # it's a default value
+  #    rollingUpdate:
+  #      maxUnavailable: 1  # you can set up in %, or per number of pods
+  #      maxSurge: 1
+  #   ## this will delete all pods and create new ones, so there will be downtime
+  #   # type: Recreate 
