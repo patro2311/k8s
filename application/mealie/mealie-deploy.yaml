@@ -19,4 +19,5 @@ spec:
         - image: ghcr.io/mealie-recipes/mealie:nightly
           name: mealie
           ports:
-            - containerPort: 9000
+            - containerPort: 9000 # This will expose the the lcoal host where kubernetes is running, to the container port 9000
+
