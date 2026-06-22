@@ -10,7 +10,7 @@ spec:
   selector:
     matchLabels:
       app: mealie
-    namestace: mealie
+    namespace: mealie
   template:
     metadata:
       labels:
