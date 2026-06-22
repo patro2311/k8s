@@ -2,26 +2,20 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    app: testing_tag
-  name: mealie-deployment
+    app: mealier_tag
+  name: mealier-deployment 
   namespace: mealie
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: testing_tag
+      app: mealier_tag
+  template:
     metadata:
       labels:
-        app: testing_tag
+        app: mealier_tag
     spec:
       containers:
       - image: ghcr.io/mealie-recipes/mealie:nightly
         name: mealie
-  # strategy:
-  #   ## THIS WILL UPATE 2 PODS AT A TIME, AND WILL KEEP 8 PODS RUNNING
-  #    type: RollingUpdate # it's a default value
-  #    rollingUpdate:
-  #      maxUnavailable: 1  # you can set up in %, or per number of pods
-  #      maxSurge: 1
-  #   ## this will delete all pods and create new ones, so there will be downtime
-  #   # type: Recreate 
+
