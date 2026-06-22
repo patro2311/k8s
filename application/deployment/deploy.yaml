@@ -2,23 +2,23 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    app: httpd
-  name: httpd-deployment
+    app: mealie
+  name: mealie-deployment
+  namespace: mealie
 spec:
-  replicas: 10
+  replicas: 1
   selector:
     matchLabels:
-      app: httpd
+      app: mealie
+    namestace: mealie
   template:
     metadata:
       labels:
-        app: httpd
+        app: mealie
     spec:
       containers:
-        - image: httpd
-          name: httpd
-          command: ["/bin/bash", "-c"] # it will override the default command of the image, which is "httpd-foreground"
-          arg: ["sleep 5", "exit 1"] # it will override the default args of the image, which is "-D FOREGROUND"
+        - image: ghcr.io/mealie-recipes/mealie:nightly
+          name: mealie
   strategy:
     ## THIS WILL UPATE 2 PODS AT A TIME, AND WILL KEEP 8 PODS RUNNING
      type: RollingUpdate # it's a default value
