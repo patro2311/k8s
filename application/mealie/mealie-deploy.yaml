@@ -2,22 +2,22 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    app: mealie
+    app: mealie-label
   name: mealie-deployment
   namespace: mealie
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: mealie
+      app: mealie-label
   template:
     metadata:
       labels:
-        app: mealie
+        app: mealie-label
     spec:
       containers:
-        - image: ghcr.io/mealie-recipes/mealie:nightly
-          name: mealie
+      - image: ghcr.io/mealie-recipes/mealie:nightly
+        name: mealie
   strategy:
     ## THIS WILL UPATE 2 PODS AT A TIME, AND WILL KEEP 8 PODS RUNNING
      type: RollingUpdate # it's a default value
