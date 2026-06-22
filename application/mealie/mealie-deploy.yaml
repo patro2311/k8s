@@ -16,6 +16,7 @@ spec:
         app: mealier_tag
     spec:
       containers:
-      - image: ghcr.io/mealie-recipes/mealie:nightly
-        name: mealie
-
+        - image: ghcr.io/mealie-recipes/mealie:nightly
+          name: mealie
+          ports:
+            - containerPort: 9000
