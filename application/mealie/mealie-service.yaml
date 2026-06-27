@@ -6,7 +6,7 @@ metadata:
   name: mealier-deployment
 spec:
   ports:
-  - port: 8008
+  - port: 8008 # Port to connect form your remote machine (local network)
     protocol: TCP
     targetPort: 9000
   selector:
