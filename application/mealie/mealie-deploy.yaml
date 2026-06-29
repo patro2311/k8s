@@ -18,7 +18,28 @@ spec:
       containers:
         - image: ghcr.io/mealie-recipes/mealie:nightly
           name: mealie
+          VolumeMounts:
+            - mountPath: /scratch
+              name: scratch-volume
           ports:
             - containerPort: 9000 # This will expose the the local  host where kubernetes is running, to the container port 9000
-
+      volumes:
+        - name: scratch-volume
+          emptyDir:
+            sizeLimit: 500Mi
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: mealier_tag
+  name: mealier-deployment
+spec:
+  ports:
+  - port: 8008 # Port to connect form your remote machine (local network)
+    protocol: TCP
+    targetPort: 9000
+  selector:
+    app: mealier_tag
+  type: LoadBalancer # Now you can connect to the IP of the node + :9000 port
 
