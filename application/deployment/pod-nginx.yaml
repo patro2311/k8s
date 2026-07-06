@@ -26,4 +26,4 @@ spec:
         sizeLimit: 500Mi
 # to connect 
 #  kubectl exec -it pods/nginx-pod-yaml -c nginx -- bash
-
+#  https://kubernetes.io/docs/reference/kubernetes-api/core/pod-v1/#Container
