@@ -20,9 +20,9 @@ spec:
           name: mealie
           ports:
             - containerPort: 9000 # This will expose the the local  host where kubernetes is running, to the container port 9000
-      volumeMounts:
-        - mountPath: /app/data
-          name: mealie-data
+          volumeMounts:
+            - mountPath: /app/data
+              name: mealie-data
       volumes:
         - name: mealie-data-storage
           persistentVolumeClaim:
@@ -43,4 +43,5 @@ spec:
   selector:
     app: mealier_tag
   type: LoadBalancer # Now you can connect to the IP of the node + :9000 port
-
+  
+"spec.template.spec.volumeMounts"
