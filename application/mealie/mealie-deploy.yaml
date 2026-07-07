@@ -21,8 +21,8 @@ spec:
           ports:
             - containerPort: 9000 # This will expose the the local  host where kubernetes is running, to the container port 9000
           volumeMounts:
-            - mountPath: /app/data
-              name: mealie-data-storage
+          - mountPath: /app/data
+            name: mealie-data-storage
       volumes:
         - name: mealie-data-storage
           persistentVolumeClaim:
