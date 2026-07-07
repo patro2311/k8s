@@ -43,5 +43,3 @@ spec:
   selector:
     app: mealier_tag
   type: LoadBalancer # Now you can connect to the IP of the node + :9000 port
-  
-"spec.template.spec.volumeMounts"
