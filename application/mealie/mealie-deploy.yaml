@@ -22,11 +22,13 @@ spec:
             - containerPort: 9000 # This will expose the the local  host where kubernetes is running, to the container port 9000
           volumeMounts:
             - mountPath: /app/data
-              name: mealie-data-storage
+              name: mealie-data-storage # needs to be same as a 'claimName'
       volumes:
-        - name: mealie-data-storage
+        - name: mealie-data-storage # this name can be whatever you like 
           persistentVolumeClaim:
             claimName: mealie-data-storage
+# COMMAND  kubectl get persistentvolume (now you can see name of the volume)
+# kubectl get persistentvolumeclaim (now is define, its not pending anymore)
 
 ---
 apiVersion: v1
